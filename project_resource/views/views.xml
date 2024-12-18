@@ -1,0 +1,81 @@
+<odoo>
+    <record id="view_project_form" model="ir.ui.view">
+        <field name="name">project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group>
+                    <field name="total_resource_cost" readonly="1"/>
+                    <field name="currency_id"/>
+                </group>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                
+                <page string="Project Resources">
+                    <field name="resource_ids" widget="one2many_list">
+                        <!-- <kanban>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="status"/>
+                            <field name="cost"/>
+                            <field name="owner_id"/>
+                        </kanban> -->
+                        <kanban>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div class="oe_kanban_card">
+                                        <h3><field name="name"/></h3>
+                                        Type: <field name="type"/>
+                                        <br/>
+                                        Status: <field name="status"/>
+                                        <br/>
+                                        Cost: <strong><field name="cost"/> <field name="currency_id"/></strong>
+                                        <br/>
+                                        <field name="owner_id"/>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+
+                    
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="view_project_resource_tree" model="ir.ui.view">
+        <field name="name">project.resource.tree</field>
+        <field name="model">project.resource</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="type"/>
+                <field name="status"/>
+                <field name="cost"/>
+                <field name="owner_id"/>
+            </tree>
+        </field>
+    </record> -->
+
+    <!-- <record id="view_project_resource_form" model="ir.ui.view">
+        <field name="name">project.resource.form</field>
+        <field name="model">project.resource</field>
+        <field name="arch" type="xml">
+            <form string="Project Resource">
+                <group>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="status"/>
+                    <field name="cost"/>
+                    <field name="currency_id"/>
+                    <field name="owner_id"/>
+                    <field name="payment_ids" widget="many2many_tags"/>
+                    <field name="invoice_id"/>
+                </group>
+            </form>
+        </field>
+    </record> -->
+
+</odoo>
